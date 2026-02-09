@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Valentine Archive 💌</h1>
+<ul>
+{% for d in days %}
+<li><a href="/archive/{{ d }}">{{ days[d].name }}</a></li>
+{% endfor %}
+<li><a href="/archive/14">Valentine's Day</a></li>
+</ul>
+{% endblock %}

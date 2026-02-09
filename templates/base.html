@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Valentine Special 💖</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <!-- Mobile friendly -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- DATE -->
+        <p class="date">{{ today }}</p>
+
+        <!-- PAGE CONTENT -->
+        {% block content %}
+        {% endblock %}
+
+        <!-- MUSIC BUTTON -->
+        {% if music %}
+            <button onclick="playMusic()">🎵 Start Music</button>
+
+            <audio id="bg-music" loop>
+                <source src="{{ url_for('static', filename='music/' + music) }}" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+
+            <script>
+                function playMusic() {
+                    const music = document.getElementById("bg-music");
+                    music.play();
+                }
+            </script>
+        {% endif %}
+
+    </div>
+
+</body>
+</html>

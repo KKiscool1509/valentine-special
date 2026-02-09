@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>I LOVE YOU IJJU ❤️</h1>
+{% for pic in photos %}
+<img src="{{ url_for('static', filename='images/' + pic) }}" width="250">
+{% endfor %}
+{% endblock %}
