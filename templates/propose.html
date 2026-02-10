@@ -1,8 +1,48 @@
-{% extends "base.html" %}
-{% block content %}
-<h1>Will you be my Valentine? 💍</h1>
-<button>YES 💖</button>
-<button onmouseover="this.style.position='absolute';this.style.left=Math.random()*80+'%';this.style.top=Math.random()*80+'%';">
-NO 😈
-</button>
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Propose Day 💍</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h1>💍 Will You Be Mine? 💖</h1>
+    <p class="date">{{ today }}</p>
+
+    <!-- Music -->
+    <audio id="bgMusic" loop>
+        <source src="{{ url_for('static', filename='music/propose.mp3') }}" type="audio/mpeg">
+    </audio>
+
+    <button class="music-btn" onclick="playMusic()">🎵 Start Music</button>
+
+    <div class="buttons">
+        <button class="yes-btn" onclick="sayYes()">YES 💖</button>
+        <button class="no-btn" id="noBtn">NO 🙈</button>
+    </div>
+</div>
+
+<script>
+function playMusic() {
+    document.getElementById("bgMusic").play();
+}
+
+/* YES button */
+function sayYes() {
+    alert("YAYYYY 😭❤️💍\nYou just made me the happiest person alive!\nI LOVE YOU SO MUCH 💖");
+}
+
+/* NO button runs away */
+const noBtn = document.getElementById("noBtn");
+
+noBtn.addEventListener("mouseover", () => {
+    const x = Math.random() * 250 - 125;
+    const y = Math.random() * 250 - 125;
+    noBtn.style.transform = `translate(${x}px, ${y}px)`;
+});
+</script>
+
+</body>
+</html>
